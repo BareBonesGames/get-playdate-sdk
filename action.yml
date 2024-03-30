@@ -137,9 +137,7 @@ runs:
       shell: bash
       run: |
         PLAYDATE_SDK_PATH_LOCAL=$(realpath ~/Documents/PlaydateSDK)
-        PLAYDATE_SDK_PATH_NATIVE_LOCAL=$(~/Documents/PlaydateSDK)
         echo "PLAYDATE_SDK_PATH=$PLAYDATE_SDK_PATH_LOCAL" >> "$GITHUB_ENV"
-        echo "PLAYDATE_SDK_PATH_NATIVE=$PLAYDATE_SDK_PATH_NATIVE_LOCAL" >> "$GITHUB_ENV"
         echo "$PLAYDATE_SDK_PATH_LOCAL/bin" >> $GITHUB_PATH
 
     - name: install gnu-arm-gcc
@@ -152,5 +150,5 @@ runs:
       shell: bash
       run: |
         echo "root=$PLAYDATE_SDK_PATH" >> $GITHUB_OUTPUT
-        echo "root-native=$PLAYDATE_SDK_PATH_NATIVE" >> $GITHUB_OUTPUT
+        echo "root-native=~/Documents/PlaydateSDK" >> $GITHUB_OUTPUT
         echo "version=$(cat $PLAYDATE_SDK_PATH/VERSION.txt)" >> $GITHUB_OUTPUT
