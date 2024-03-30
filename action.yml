@@ -129,18 +129,18 @@ runs:
       # run: Start-Process -Wait -FilePath "${{ steps.cfg.outputs.filename }}" -ArgumentList "/S","/D=D:\\PlaydateSDK"
       run: Start-Process -Wait -FilePath "${{ steps.cfg.outputs.filename }}" -ArgumentList "/S"
 
-    #- name: set env
-    #  if: runner.os == 'Windows'
-    #  shell: bash
-    #  run: |
-    #    PLAYDATE_SDK_PATH_lOCAL=$(realpath ~/Documents/PlaydateSDK)
-    #    echo "PLAYDATE_SDK_PATH=$PLAYDATE_SDK_PATH_lOCAL" >> "$GITHUB_ENV"
-    #    echo "$PLAYDATE_SDK_PATH_lOCAL/bin" >> $GITHUB_PATH
+    - name: set env
+      if: runner.os == 'Windows'
+      shell: bash
+      run: |
+        PLAYDATE_SDK_PATH_LOCAL=$(realpath ~/Documents/PlaydateSDK)
+        echo "PLAYDATE_SDK_PATH=$PLAYDATE_SDK_PATH_LOCAL" >> "$GITHUB_ENV"
+        echo "$PLAYDATE_SDK_PATH_LOCAL/bin" >> $GITHUB_PATH
 
-    #- name: install gnu-arm-gcc
-    #  if: runner.os == 'Windows'
-    #  shell: powershell
-    #  run: choco install --no-progress gcc-arm-embedded -y
+    - name: install gnu-arm-gcc
+      if: runner.os == 'Windows'
+      shell: powershell
+      run: choco install --no-progress gcc-arm-embedded -y
 
     - name: post setup
       id: output
