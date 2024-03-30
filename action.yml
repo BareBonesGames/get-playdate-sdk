@@ -74,7 +74,7 @@ runs:
 
     - name: Cache restore
       if: inputs.cache == 'true'
-      uses: actions/cache/restore@v3
+      uses: actions/cache/restore@v4
       id: cache-restore
       with:
         path: ${{ steps.cfg.outputs.filename }}
