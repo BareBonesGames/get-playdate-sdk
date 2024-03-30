@@ -27,6 +27,9 @@ outputs:
   root:
     description: Path of SDK root
     value: ${{ steps.output.outputs.root }}
+  root-real:
+    description: Real path of SDK root
+    value: ${{ steps.output.outputs.root-real }}
   version:
     description: Version of the installed SDK.
     value: ${{ steps.output.outputs.version }}
@@ -147,4 +150,5 @@ runs:
       shell: bash
       run: |
         echo "root=$PLAYDATE_SDK_PATH" >> $GITHUB_OUTPUT
+        echo "root-real=$PLAYDATE_SDK_PATH_LOCAL" >> $GITHUB_OUTPUT
         echo "version=$(cat $PLAYDATE_SDK_PATH/VERSION.txt)" >> $GITHUB_OUTPUT
